@@ -12,14 +12,15 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome', $data);
 });
 
 
 
 
 Route::get('/uppercase/{string}', function ($string) {
-	return strtoupper($string);
+	$string = strtoupper($string); 
+	return view('uppercase')->with('string', $string);
 });
 
 Route::get('/increment/{number}', function ($number){
