@@ -29,3 +29,10 @@ Route::get('/increment/{number}', function ($number){
 Route::get('/add/{number1}{number2}', function ($number1, $number2) {
 	return $number1 + $number2;
 });
+
+Route::get('/rolldice/{guess}', function($guess) {
+	$randomNumber = rand(1,6);
+	if ($guess == $randomNumber){
+		return view('roll-dice')->with('randomNumber', $randomNumber);
+	} 
+});
