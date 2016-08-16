@@ -18,11 +18,14 @@ Route::get('/', function () {
 
 
 
-Route::get('/sayhello/{name}', function($name)
-{
-    if ($name == "Chris") {
-        return redirect('/');
-    }
+Route::get('/uppercase/{string}', function ($string) {
+	return strtoupper($string);
+});
 
-    return "Hello, $name!";
+Route::get('/increment/{number}', function ($number){
+	return $number + 1;
+});
+
+Route::get('/add/{number1}{number2}', function ($number1, $number2) {
+	return $number1 + $number2;
 });
