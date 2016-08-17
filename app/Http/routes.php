@@ -11,6 +11,10 @@
 |
 */
 
+
+Route::resource('posts', 'PostsController');
+
+
 Route::get('/', 'HomeController@showWelcome');
 
 
