@@ -16,7 +16,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return "index";
+    $posts = \App\Post::all();
+    return $posts;
         //
     }
 
@@ -39,7 +40,13 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        return back()->withInput();
+        $post1 = new \App\Post();
+        $post1->title = $request->input('title');
+        $post1->url=$request->input('url');
+        $post1->content=$request->input('content');;
+        $post1->created_by = 1;
+        $post1->save();
+        return redirect()->action('PostsController@index');
         //
     }
 
@@ -51,7 +58,8 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        return "show";
+        $post = \App\Post::find($id);
+        return $post;
         //
     }
 
