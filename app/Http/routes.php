@@ -11,21 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome', $data);
-});
+Route::get('/', 'HomeController@showWelcome');
 
 
 
 
-Route::get('/uppercase/{string}', function ($string) {
-	$string = strtoupper($string); 
-	return view('uppercase')->with('string', $string);
-});
+Route::get('/uppercase/{word?}', 'HomeController@uppercase');
 
-Route::get('/increment/{number}', function ($number){
-	return $number + 1;
-});
+Route::get('/increment/{number?}', 'HomeController@increment');
 
 Route::get('/add/{number1}{number2}', function ($number1, $number2) {
 	return $number1 + $number2;
