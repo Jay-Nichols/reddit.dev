@@ -29,6 +29,8 @@ class PostsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
+
+
     {
         return view('posts.create');
         //
@@ -57,6 +59,7 @@ class PostsController extends Controller
         $post1->content=$request->input('content');;
         $post1->created_by = 1;
         $post1->save();
+        $request->session()->flash('success', 'Post was saved.');
         return redirect()->action('PostsController@index');
         //
     }
