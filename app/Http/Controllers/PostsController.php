@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Post;
 
 class PostsController extends Controller
 {
@@ -40,6 +41,15 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
+        
+        // $rules = array(
+        //     'title' => 'required',
+        //     'url' => 'required',
+        //     'content' => 'required'
+        // );
+
+        $this->validate($request, Post::$rules);
+
         $post1 = new \App\Post();
         $post1->title = $request->input('title');
         $post1->url=$request->input('url');
@@ -84,6 +94,7 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, Post::$rules);
         return "update";
         //
     }
