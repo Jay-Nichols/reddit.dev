@@ -3,9 +3,9 @@
 @section('content')
 
 @foreach ($posts as $post)
-<h3>{{ $post->title }}</h3>
+<h2>{{$post->title }}</h2> <h3>{{ $post->created_at->setTimezone('America/Chicago')->format('l, F jS Y @ h:i:s A') }}</h3>
 @endforeach
 
-{{!! $posts->render() !!}}
+{!! $posts->render() !!}
 
 @stop
