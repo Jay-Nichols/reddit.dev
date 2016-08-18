@@ -17,8 +17,9 @@ class PostsController extends Controller
      */
     public function index()
     {
-    $posts = \App\Post::all();
-    return $posts;
+    $posts = Post::paginate(2);
+    return view('posts.index')->with(array('posts' => $posts));
+    
         //
     }
 
@@ -95,6 +96,7 @@ class PostsController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, Post::$rules);
+
         return "update";
         //
     }
