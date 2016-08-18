@@ -2,12 +2,14 @@
 
 @section('content')
 
-<ul>
-<?php foreach ($posts as $post): ?>
-	<li><?= $post; ?></li>
-<?php endforeach; ?>
-
-</ul>
-
+<tbody>
+@foreach($posts as $post)
+	<tr>
+		<td>{{ $post->title }}</td>
+		<td>{{ $post->url }}</td>
+		<td>{{ $post->content }}</td>
+	</tr>
+@endforeach
+<tbody>
 
 @stop

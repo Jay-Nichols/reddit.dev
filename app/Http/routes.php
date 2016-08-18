@@ -14,6 +14,11 @@
 
 Route::resource('posts', 'PostsController');
 
+Route::get('orm-test', function ()
+{
+    // test code here
+});
+
 
 Route::get('/', 'HomeController@showWelcome');
 
