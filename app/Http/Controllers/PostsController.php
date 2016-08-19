@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Post;
+use Log;
+
 
 class PostsController extends Controller
 {
@@ -17,7 +19,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-    $posts = Post::paginate(2);
+    $posts = Post::paginate(4);
     return view('posts.index')->with(array('posts' => $posts));
     
         //
@@ -29,8 +31,6 @@ class PostsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-
-
     {
         return view('posts.create');
         //
@@ -44,13 +44,6 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        
-        // $rules = array(
-        //     'title' => 'required',
-        //     'url' => 'required',
-        //     'content' => 'required'
-        // );
-
         $this->validate($request, Post::$rules);
 
         $post1 = new \App\Post();
@@ -60,7 +53,8 @@ class PostsController extends Controller
         $post1->created_by = 1;
         $post1->save();
         $request->session()->flash('success', 'Post was saved.');
-        return redirect()->action('PostsController@index');
+        Log::info(print_r($request->input(), true));
+        return redirect()->action('PostsController@create');
         //
     }
 
@@ -72,8 +66,16 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        $post = \App\Post::find($id);
-        return $post;
+
+        $post = Post::find($id);
+     
+
+        if(!$post) {
+            Log::info("Post with ID $id cannot be found");
+            abort(404);
+        }
+        return view('posts.show')->with('post', $post);
+
         //
     }
 
@@ -85,7 +87,10 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        return "edit";
+        
+        if (!$id) {
+            abort(404);
+        }
         //
     }
 
@@ -100,7 +105,9 @@ class PostsController extends Controller
     {
         $this->validate($request, Post::$rules);
 
-        return "update";
+
+
+        abort(404);
         //
     }
 
@@ -112,7 +119,9 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        return "destroy";
-        //
+        
+        if(!$id) {
+            abort(404);
+        }        
     }
 }
