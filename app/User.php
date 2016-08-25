@@ -36,4 +36,21 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+
+    public function posts()
+    {
+        // select * from posts where created_by = $user->id
+        // $query->get();  // collection of posts
+        return $this->hasMany(Post::class, 'created_by');
+    }
+
+    public static function search ($keyword)
+    {
+        return User::with('posts')
+            ->where('name', 'like', "%$keyword%")
+            ->get()
+        ;  
+    }
+    
 }

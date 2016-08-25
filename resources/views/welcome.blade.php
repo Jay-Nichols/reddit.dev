@@ -4,7 +4,7 @@
         <title>Laravel</title>
 
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-
+        
         <style>
             html, body {
                 height: 100%;
@@ -38,6 +38,8 @@
     <body>
         <div class="container">
             <div class="content">
+                <div><a href="{{ action('Auth\AuthController@getRegister') }}">Register</a></div>
+                <div><a href="{{ action('Auth\AuthController@getLogin') }}">Log In</a></div>
                 <div class="title">Laravel 5</div>
             </div>
         </div>

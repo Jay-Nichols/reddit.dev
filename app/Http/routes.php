@@ -13,11 +13,14 @@
 
 
 Route::resource('posts', 'PostsController');
-
+Route::get('/votes/upvote/{postId}', 'VotesController@upvote');
 // Route::get('orm-test', function ()
 // {
 //     // test code here
 // });
+
+Route::get('/search', 'PostsController@search');
+ 
 
 
 Route::get('/', 'HomeController@showWelcome');
@@ -39,3 +42,10 @@ Route::get('/rolldice/{guess}', function($guess) {
 		return view('roll-dice')->with('randomNumber', $randomNumber);
 	} 
 });
+
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
+
+Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
