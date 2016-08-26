@@ -17,7 +17,7 @@
 		@foreach ($posts as $post)
 
 		<tr>
-			<td><a style="font-size: 1.7em;"class="glyphicon glyphicon-arrow-up"></a><br><p></p><br><a style="font-size:1.7em" class="glyphicon glyphicon-arrow-down"></a></td>
+			<td><a style="font-size: 1.7em;"class="glyphicon glyphicon-arrow-up" href="{{ action('VotesController@upvote', $post->id)}}"></a><br><p></p><br><a style="font-size:1.7em" class="glyphicon glyphicon-arrow-down" href="{{ action('VotesController@downvote', $post->id) }}"></a></td>
 			<td><h3><a href="{{ action('PostsController@show', $post->id) }}">{{ $post->title }}</a></h3><p>Submitted {{ $post->created_at->setTimezone('America/Chicago')->format('l, F jS Y @ h:i:s A') }}</p></td></p></td>
 			<td><a class="btn btn-warning" href="{{ action('PostsController@edit', $post->id) }}">Edit</a></td>
 			<td>

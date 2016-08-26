@@ -14,10 +14,15 @@
 
 Route::resource('posts', 'PostsController');
 Route::get('/votes/upvote/{postId}', 'VotesController@upvote');
+Route::get('/votes/downvote/{postId}', 'VotesController@downvote');
+Route::get('/votes/total', 'VotesController@updates');
 // Route::get('orm-test', function ()
 // {
 //     // test code here
 // });
+
+
+
 
 Route::get('/search', 'PostsController@search');
  
