@@ -22,7 +22,7 @@
 			<td><a class="btn btn-warning" href="{{ action('PostsController@edit', $post->id) }}">Edit</a></td>
 			<td>
 				<form method="post" action="{{ action('PostsController@destroy', $post->id) }}">
-					{{ csrf_field() }}
+					{{!! csrf_field() !!}}
 					{{ method_field('DELETE') }}
 				<button type="submit" class="btn btn-danger">Delete</button>
 			</form>
