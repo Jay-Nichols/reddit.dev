@@ -7,13 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+	protected $table = 'posts';
 	// use SoftDeletes;
 	
 	public static $rules = array(
-            'title' => 'required',
+            'title' => 'required|max:75',
             'url' => 'required',
             'content' => 'required'
-        );
+    );
 	// public function user()
 	// {
 	// 	return $this->belongsTo('App\User', 'created_by', 'id');
