@@ -38,7 +38,10 @@ class Post extends Model
 		return DB::table('posts')->where('created_by', $userId)->count();
 	}
 	
-       
+    public function user()
+    {
+    	return $this->belongsTo(User::class, 'created_by');
+    }
 	
     //
 }

@@ -2,9 +2,9 @@
 
 @section('content')
 
-<h1>{{ $post->title }}</h1>
-<h3>{{ $post->content }}</h3>
-<p>{{ $post->url }}</p>
+<h1>Post: {{ $post->title }}</h1>
+<h3>Content: {{ $post->content }}</h3>
+<p>URL: {{ $post->url }}</p>
 
 
 <!-- <table class="table table-inverse">
