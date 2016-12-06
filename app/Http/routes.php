@@ -31,7 +31,10 @@ Route::get('/search', 'PostsController@search');
 Route::get('/', 'HomeController@showWelcome');
 
 
-
+Route::get('/sayhello/{name}', function($name) {
+	$data = array('name' => $name);
+	return view('my-first-view')->with($data);
+});
 
 Route::get('/uppercase/{word?}', 'HomeController@uppercase');
 
