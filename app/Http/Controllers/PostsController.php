@@ -38,11 +38,12 @@ class PostsController extends Controller
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function create()
+	public function create(Request $request)
 	{
 		if(!Auth::check()) {
 		  return redirect()->action('Auth\AuthController@getLogin');
 		}
+		$request->session()->flash('success', 'Post was created.'); 
 		return view('posts.create');
 		//
 	}
@@ -162,7 +163,7 @@ class PostsController extends Controller
 
 	
 
-	public function destroy($id)
+	public function destroy(Request $request, $id)
 	{
 		$post = Post::find($id);
 		
@@ -171,6 +172,7 @@ class PostsController extends Controller
 			abort(404);
 		} 
 		$post->delete();
+		$request->session()->flash('success', 'Post was deleted.');
 		return redirect()->action('PostsController@store');
 
 	}
