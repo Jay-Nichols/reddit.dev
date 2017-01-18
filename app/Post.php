@@ -27,10 +27,9 @@ class Post extends Model
 	}
 
 
-	public static function search ($keyword)
+	public static function search($keyword)
 	{
 		return Post::where('title', "like", "%$keyword%")->get();
-
 	}
 
 	public static function count($userId)

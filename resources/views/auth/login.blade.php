@@ -2,14 +2,15 @@
 
 @section('content')
 <form method="POST" action="{{ action('Auth\AuthController@postLogin') }}">
-	{{ csrf_field() }}
+	{!! csrf_field() !!}
 	<div class="form-group">
 		<label for "email">Email</label>
 		<input
 			type="email"
 			class="form-control"
 			name="email"
-			id="email">
+			id="email"
+			value="{{ old('email') }}">
 		{!! $errors->first('email', '<span class="help-block">:message</span>') !!}
 	</div>
 	<div class="form-group">

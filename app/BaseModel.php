@@ -3,7 +3,7 @@
 namespace App\Mode;
 
 use Illuminate\Database\Eloquent\Model;
-use Carbon/Carbon;
+use Carbon\Carbon;
 
 class BaseModel extends Model
 {

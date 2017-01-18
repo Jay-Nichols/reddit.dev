@@ -21,6 +21,10 @@ Route::get('/votes/total', 'VotesController@updates');
 //     // test code here
 // });
 
+Route::get('/querybuilder', function() {
+	dd(App\Post::where('id','>',3)->where('created_by','2')->orderBy('created_at')->get());
+
+});
 
 
 
